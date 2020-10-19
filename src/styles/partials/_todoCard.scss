@@ -1,0 +1,24 @@
+.card-columns .card {
+  margin-bottom: 18px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+.card-body {
+  padding-bottom: 12px;
+}
+
+.card-title {
+  margin-bottom: 0;
+  + h6.small {
+    margin-bottom: 1rem;
+  }
+}
+.card-text {
+  margin-bottom: 1rem;
+}

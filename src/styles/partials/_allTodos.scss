@@ -1,0 +1,28 @@
+.card-columns {
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    column-count: 4;
+  }
+  @media (min-width: 600px) and (max-width: 750px) {
+    column-count: 2;
+  }
+  @media (max-width: 599.98px) {
+    column-count: 1;
+  }
+}
+
+#cards-container {
+  position: relative;
+
+  .loader_container {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

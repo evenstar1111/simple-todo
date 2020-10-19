@@ -1,0 +1,12 @@
+@mixin buttonTheme($context, $color, $bgcolor, $bgcolorHover) {
+  .cbtn-#{$context} {
+    color: $color;
+    background-color: $bgcolor;
+
+    #{'&:hover'},
+    #{'&:active'} {
+      color: $color;
+      background-color: $bgcolorHover;
+    }
+  }
+}

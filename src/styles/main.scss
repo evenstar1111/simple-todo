@@ -1,0 +1,60 @@
+$theme-colors: (
+  'danger': rgba(255, 204, 95, 0.801),
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'partials/mixins';
+@import 'partials/todoCard.scss';
+@import 'partials/layout.scss';
+@import 'partials/createTodo.scss';
+@import 'partials/allTodos.scss';
+@import 'partials/modals.scss';
+
+body,
+html {
+  height: 100%;
+}
+
+.badge {
+  padding: 4px 8px;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  background-color: unset;
+  border: none;
+  box-shadow: none;
+  @media (prefer-reduced-motion: prefer) {
+    transition: 0.3s ease;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+@include buttonTheme(
+  info,
+  hsl(188, 100%, 29%),
+  rgba(23, 164, 186, 0.12),
+  rgba(23, 164, 186, 0.24)
+);
+@include buttonTheme(
+  danger,
+  hsl(354, 70%, 54%),
+  hsla(354, 70%, 54%, 0.12),
+  hsla(354, 70%, 54%, 0.24)
+);
+@include buttonTheme(
+  secondary,
+  hsl(210, 6%, 35%),
+  hsla(208, 7%, 46%, 0.12),
+  hsla(208, 7%, 46%, 0.24)
+);
+@include buttonTheme(
+  primary,
+  hsl(211, 100%, 50%),
+  hsla(211, 100%, 50%, 0.12),
+  hsla(211, 100%, 50%, 0.3)
+);

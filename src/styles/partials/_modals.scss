@@ -1,0 +1,24 @@
+.modal-dialog {
+  margin-top: -50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  textarea {
+    height: 120px;
+    overflow: auto;
+  }
+}
+
+.del-todo-btn-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.del-todo-text {
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
