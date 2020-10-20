@@ -6,19 +6,18 @@ import fetch from 'isomorphic-fetch';
 
 export default function TodoCard({ todo, deleteEvent }) {
   const [values, setValues] = useState({
-    description: todo.description,
-    status: todo.status,
     error: '',
     success: '',
     loading: false,
   });
 
-  const { status, description, error, success, loading } = values;
+  const { error, success, loading } = values;
+  const { title, status, description } = todo;
 
   const handleEditFormSubmit = async (e, st, des) => {
     setValues({ loading: true, error: '', success: '' });
     e.preventDefault();
-    const body = { title: todo.title, status: st, description: des };
+    const body = { title: title, status: st, description: des };
     const res = await fetch('/api/todos', {
       method: 'PUT',
       headers: {
@@ -38,11 +37,10 @@ export default function TodoCard({ todo, deleteEvent }) {
     }
 
     setValues({
-      status: st,
-      description: des,
       loading: false,
       success: jsonData.message,
     });
+    window.location = '/';
   };
 
   const checkIfNew = /new/i.test(status);

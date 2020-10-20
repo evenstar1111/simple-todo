@@ -4,13 +4,13 @@ import { TodoCard, Button, Loader } from '../components';
 import { saveInSession, getFromSession } from '../localStorageHelpers';
 
 function ShowAllTodos() {
+  const [todos, setTodos] = useState([]);
   const [values, setValues] = useState({
-    todos: [],
     loading: false,
     error: '',
   });
 
-  const { todos, loading, error } = values;
+  const { loading, error } = values;
 
   const loadTodos = async () => {
     setValues({ ...values, loading: true });
@@ -26,21 +26,22 @@ function ShowAllTodos() {
     if (jsonData.error) {
       return setValues({ ...values, error: jsonData.error });
     }
-    setValues({ ...values, loading: false, todos: jsonData });
+    console.table(jsonData);
+    setTodos(jsonData);
+    setValues({ ...values, loading: false });
   };
 
-  const deleteTodo = (index) => {
-    // await fetch('/api/todos', {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ title }),
-    // });
-
-    const filteredTodos = Object.assign([], values.todos);
+  const deleteTodo = async (index, title) => {
+    await fetch('/api/todos', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title }),
+    });
+    const filteredTodos = Object.assign([], todos);
     filteredTodos.splice(index, 1);
-    setValues({ ...values, todos: filteredTodos });
+    setTodos(filteredTodos);
   };
 
   useEffect(() => {
@@ -69,13 +70,12 @@ function ShowAllTodos() {
       <div id="cards-container" className="card-columns">
         {loadingMsg}
         {!loading &&
-          todos &&
           todos.map((todo, index) => (
             <TodoCard
               todo={todo}
               key={index}
               deleteEvent={() => {
-                deleteTodo(index);
+                deleteTodo(index, todo.title);
               }}
             />
           ))}
